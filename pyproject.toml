@@ -1,0 +1,50 @@
+[project]
+name = "taichi-gpt"
+version = "0.1.0"
+description = "LINE chat log fine-tuning project"
+authors = [
+    {name = "taichi"}
+]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "transformers>=4.46.0",
+    "peft>=0.14.0",
+    "trl>=0.13.0",
+    "bitsandbytes>=0.44.0",
+    "datasets>=3.0.0",
+    "accelerate>=1.0.0",
+    "sentencepiece>=0.2.0",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+# -------------------------------------------------------------------
+# PyTorchはCUDA版を使うため、別途インストールする（README参照）
+#   pip install torch --index-url https://download.pytorch.org/whl/cu124
+# -------------------------------------------------------------------
+[tool.poetry]
+name = "taichi-gpt"
+version = "0.1.0"
+description = "LINE chat log fine-tuning project"
+authors = ["taichi"]
+packages = []
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+transformers = ">=4.46.0"
+peft = ">=0.14.0"
+trl = ">=0.13.0"
+bitsandbytes = ">=0.44.0"
+datasets = ">=3.0.0"
+accelerate = ">=1.0.0"
+sentencepiece = ">=0.2.0"
+torch = {version = ">=2.4.0", source = "pytorch-cuda124"}
+
+[[tool.poetry.source]]
+name = "pytorch-cuda124"
+url = "https://download.pytorch.org/whl/cu124"
+priority = "supplemental"
